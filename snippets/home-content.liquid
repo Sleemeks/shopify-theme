@@ -1,0 +1,8 @@
+{% if settings.home_page_content != empty %}
+  <div class="feature-homepage-content">
+    <h2 class="text-center">{{ pages[settings.home_page_content].title }}</h2>
+    <div class="rte">
+      {{ pages[settings.home_page_content].content }}
+    </div>
+  </div>
+{% endif %}

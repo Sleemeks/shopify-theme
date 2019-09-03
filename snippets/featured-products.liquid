@@ -1,0 +1,59 @@
+<!-- snippets/featured-products.liquid -->
+
+{% assign isEmpty = true %}
+
+{% if settings.home_featured_collections_title != blank %}
+  <h2 class="text-center">{{ settings.home_featured_products_title }}</h2>
+{% endif %}
+
+{% if settings.home_featured_products_collection != empty %}
+  {% assign collection = collections[settings.home_featured_products_collection] %}
+
+  {% assign product_limit = settings.featured_products_list_limit %}
+
+  {% if product_limit == '1' %}
+    {% assign grid_item_width = 'large--one-whole' %}
+  {% elsif product_limit == '2' %}
+    {% assign grid_item_width = 'large--one-half medium--one-half' %}
+  {% elsif product_limit == '3' %}
+    {% assign grid_item_width = 'large--one-third medium--one-half' %}
+  {% else %}
+    {% assign grid_item_width = 'large--one-quarter medium--one-half' %}
+  {% endif %}
+
+  <div class="grid-uniform text-center">
+    {% assign products_sort_val = settings.home_featured_products_sort | split: '-'  %}
+    {% assign sort_value = products_sort_val[0] %}
+    {% assign products = collection.products | sort: sort_value %}
+
+    {% if products_sort_val[1] != blank %}
+      {% assign index = 0 %}
+      {% assign products_limit = settings.featured_products_list_limit %}
+
+      {% for product in products reversed %}        
+        {% assign isEmpty = false %}
+        {% assign index = index | plus: 1 %}
+        {% assign products_limit = products_limit | plus: 0 %}
+
+        {% include 'product-grid-item' %}
+        {% if index == products_limit %}
+          {% break %}
+        {% endif; %}
+      {% endfor %}
+    {% else %}
+      {% for product in products limit:settings.featured_products_list_limit %}
+        {% assign isEmpty = false %}
+        {% include 'product-grid-item' %}
+      {% endfor %}
+    {% endif %}
+  </div>
+{% endif %}
+
+{% if isEmpty %}
+  {% unless emptyState %}
+    {{ 'theme-onboarding.css' | global_asset_url | stylesheet_tag }}
+    {% assign emptyState = true %}
+  {% endunless %}
+
+  {% include 'onboarding-featured-products' %}
+{% endif %}

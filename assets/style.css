@@ -1,0 +1,147 @@
+* {
+	outline: 0;
+}
+a,
+input,
+button {
+	-moz-transition: all 0.3s ease-out;
+	-webkit-transition: all 0.3s ease-out;
+	-o-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+}
+body.js-drawer-open-right {
+	padding-right: 17px;
+}
+.main-content {
+	min-height: 500px;
+	padding-bottom: 100px;
+}
+
+/*============================================================================
+  #Site header
+==============================================================================*/
+.site-header {
+	padding: 0;
+	background-color: rgba(50,58,69,0.9);
+	-ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#cc323a45,endColorstr=#cc323a45);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#cc323a45,endColorstr=#cc323a45);
+	zoom: 1;
+	min-height: 50px;
+}
+.site-header__logo .site-header__logo-link {
+	font-size: 19px;
+	padding: 12px 0;
+}
+
+.site-header__logo .site-header__logo-img img {
+	max-width: 100%;
+	max-height: 50px;
+}
+
+/*============================================================================
+  #Site Nav
+==============================================================================*/
+.nav-bar {
+	background: none;
+}
+
+.site-nav {
+	float: right;
+}
+.site-nav li {
+	float: left;
+}
+
+.nav-hover .site-nav__dropdown {
+	opacity: 1;
+}
+.site-nav__dropdown {
+	-moz-transition: all 0.3s ease-out;
+	-webkit-transition: all 0.3s ease-out;
+	-o-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+	opacity: 0;
+	width: 100%;
+}
+.site-nav__dropdown a {
+	background-color: rgba(50,58,69,0.9);
+	-ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#cc323a45,endColorstr=#cc323a45);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#cc323a45,endColorstr=#cc323a45);
+	zoom: 1;
+}
+.site-nav__dropdown li {
+	float: none;
+}
+
+.site-nav--mobile .site-nav__link {
+	font-size: 25px;
+	padding: 5px 35px;
+}
+
+/*============================================================================
+  #Ajax CartDrawer
+==============================================================================*/
+.drawer {
+	background-color: #f4f4f4;
+}
+
+/*============================================================================
+  #Site footer
+==============================================================================*/
+.site-footer {
+	padding: 0;
+}
+.site-footer .wrapper {
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+.site-footer-copyright .grid__item {
+	float: none;
+	margin: 0 auto;
+	max-width: 1000px;
+	padding: 15px 0;
+	width: 100%;
+}
+
+
+.site-header__search {
+	margin-top: 25px;
+	float: right;
+}
+
+.wrapper {
+	max-width: 1000px;
+	padding-right: 0;
+	padding-left: 0;
+}
+
+.product-name a {
+	font-size: 17px;
+	font-weight: 500;
+}
+
+@media (max-width: 1000px) {
+	.wrapper {
+		padding-left: 5%;
+		padding-right: 5%;
+	}
+}
+
+@media only screen and (max-width: 769px) {
+	.small--text-center {
+  		text-align: center;
+  	}
+}
+
+@media only screen and (max-width: 480px) {
+	.site-footer-copyright small {
+  		display: block;
+  	}
+  	.sort-by {
+  		display: none;	
+  	}
+  	.section-header__right {
+  		text-align: center;
+  	}
+}

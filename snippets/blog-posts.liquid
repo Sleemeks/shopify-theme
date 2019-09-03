@@ -1,0 +1,42 @@
+<!-- /snippets/blog-posts.liquid -->
+
+<h2>{{ 'homepage.sections.news_title' | t }}</h2>
+
+<div class="grid">
+  {% for article in blogs['news'].articles limit:3 %}
+
+    <div class="grid__item large--one-third">
+
+      <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: format: 'month_day_year' }}</time> 
+
+      {% if settings.blog_author_enable %}
+        <span class="blog-author">by {{ article.author }}</span>  
+      {% endif %}
+
+      <h3><a href="{{ article.url }}">{{ article.title }}</a></h3>
+
+      <div class="rte">
+        {% if article.excerpt.size > 0 %}
+          {{ article.excerpt }}
+        {% else %}
+          <p>{{ article.content | strip_html | truncatewords: 20 }}</p>
+        {% endif %}
+      </div>
+
+      <ul>
+        {% if blog.comments_enabled? %}
+        <li>
+          <a href="{{ article.url }}#comments">
+            {{ article.comments_count }}
+            {{ 'blogs.comments.comments_with_count' | t: count: article.comments_count }}
+          </a>
+        </li>
+        {% endif %}
+      </ul>
+
+      <p><a href="{{ article.url }}">{{ 'blogs.article.read_more' | t }} &rarr;</a></p>
+
+    </div>
+
+  {% endfor %}
+</div>
